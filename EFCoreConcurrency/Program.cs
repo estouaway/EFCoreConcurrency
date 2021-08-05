@@ -80,7 +80,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.NotConcurrent.FindAsync(1);
-                    article.Title = "New Title 0";
+                    var newTitle = "New Title 0";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     await dbContext.SaveChangesAsync();
                 }
             });
@@ -89,7 +91,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.NotConcurrent.FindAsync(1);
-                    article.Title = "New Title 1";
+                    var newTitle = "New Title 1";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     await dbContext.SaveChangesAsync();
                 }
             });
@@ -121,7 +125,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.ConcurrentWithToken.FindAsync(1);
-                    article.Title = "New Title 0";
+                    var newTitle = "New Title 0";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     article.Version = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                     try
                     {
@@ -138,7 +144,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.ConcurrentWithToken.FindAsync(1);
-                    article.Title = "New Title 1";
+                    var newTitle = "New Title 1";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     article.Version = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                     try
                     {
@@ -178,7 +186,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.ConcurrentWithRowVersion.FindAsync(1);
-                    article.Title = "New Title 0";
+                    var newTitle = "New Title 0";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     try
                     {
                         await dbContext.SaveChangesAsync();
@@ -194,7 +204,9 @@ namespace EFCoreConcurrency
                 using (var dbContext = new MyDbContext())
                 {
                     var article = await dbContext.ConcurrentWithRowVersion.FindAsync(1);
-                    article.Title = "New Title 1";
+                    var newTitle = "New Title 1";
+                    ConsoleUtils.WriteInf($"Trying to change article title to: {newTitle}");
+                    article.Title = newTitle;
                     try
                     {
                         await dbContext.SaveChangesAsync();
