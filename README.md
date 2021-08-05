@@ -1,5 +1,6 @@
 # EFCoreConcurrency
 Concurrency test with SQLite and EF Core
 
-![concurrent_error](https://user-images.githubusercontent.com/7544209/128382183-c138b1bf-eabf-4e51-a134-41e8491f919d.png)
+![concurrent_error](https://user-images.githubusercontent.com/7544209/128383460-eb08dd74-5b3b-42cb-a088-86eb26485a64.png)
+
 
